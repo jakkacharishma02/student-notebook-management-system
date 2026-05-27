@@ -5,7 +5,7 @@ from otp import genotp
 from cmail import send_mail
 from stoken import endata,dndata
 from mysql.connector import (connection)
-mydb=connection.MySQLConnection(user='flaskuser',host='localhost',password='password',database='flaskdb')
+mydb=connection.MySQLConnection(user='root',host='localhost',password='Jm9@1512',database='snm28')
 import flask_excel as excel #used to generate exce; files
 import re
 app=Flask(__name__)
