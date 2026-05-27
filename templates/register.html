@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Registration Form</title>
+
+    <link rel="stylesheet" href="/static/register.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <b>{{ message }}</b>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+        <h1>Register</h1>
+
+        <form method="post" onsubmit="return validateForm()">
+
+            <div class="input-box">
+                <label>Username</label>
+                <input 
+                    type="text" 
+                    name="username"
+                    id="username"
+                    placeholder="Enter username" required>
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input 
+                    type="password"
+                    name="userpassword"
+                    id="password"
+                    placeholder="Enter password" required>
+            </div>
+
+            <div class="input-box">
+                <label>Email</label>
+                <input 
+                    type="email"
+                    name="useremail"
+                    id="email"
+                    placeholder="Enter email" required>
+            </div>
+
+            <div class="input-box">
+                <label>Phone Number</label>
+                <input 
+                    type="text"
+                    name="userphone"
+                    id="phno"
+                    placeholder="Enter phone number" required>
+            </div>
+
+            <!-- Error Message -->
+
+            <p id="errorMsg"></p>
+
+            <button type="submit" class="submit-btn">Submit</button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        function validateForm(){
+
+            let username =
+                document.getElementById("username").value.trim();
+
+            let password =
+                document.getElementById("password").value.trim();
+
+            let email =
+                document.getElementById("email").value.trim();
+
+            let phno =
+                document.getElementById("phno").value.trim();
+
+            let error =
+                document.getElementById("errorMsg");
+
+            error.style.color = "#ffb3b3";
+            error.style.marginTop = "15px";
+            error.style.textAlign = "center";
+
+            // Empty Fields Validation
+
+            if(username === "" || password === "" || email === "" || phno === ""){
+
+                error.innerHTML =
+                    "All fields are required";
+
+                return false;
+            }
+
+            // Password Validation
+            // Minimum 8 characters
+            // At least one uppercase
+            // At least one lowercase
+            // At least one number
+            // At least one special character
+
+            let passwordPattern =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if(!passwordPattern.test(password)){
+
+                error.innerHTML =
+                    "Password must contain minimum 8 characters, uppercase, lowercase, number and special character";
+
+                return false;
+            }
+
+            // Email Validation
+
+            if(!email.endsWith("@gmail.com")){
+
+                error.innerHTML =
+                    "Email must contain @gmail.com";
+
+                return false;
+            }
+
+            // Phone Number Validation
+
+            let phonePattern = /^[0-9]{10}$/;
+
+            if(!phonePattern.test(phno)){
+
+                error.innerHTML =
+                    "Phone number must contain exactly 10 digits";
+
+                return false;
+            }
+
+            error.style.color = "lightgreen";
+
+            error.innerHTML =
+                "Registration Successful";
+
+            return true;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends "dashboard.html" %}
+{% block addcss %}
+<link rel="stylesheet" href="/static/addnotes.css">{% endblock %}
+{% block content %}
+
+<div class="add-notes-container">
+
+    <div class="notes-card">
+
+        <h2>UploadFile</h2>
+
+        <form  method="POST" enctype="multipart/form-data">
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+                <label for="title">UploadFile</label>
+
+                <input 
+                    type="file"
+                    id="title"
+                    name="filedata"
+                    placeholder="choose file"
+                    required
+                >
+            </div>
+
+            <!-- DESCRIPTION -->
+
+
+            <!-- BUTTON -->
+
+            <button type="submit" class="save-btn">
+                upload
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

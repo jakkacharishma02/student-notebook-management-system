@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <b>{{ message }}</b>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+        <h1>Login</h1>
+        <p>Enter your credentials to continue</p>
+        <form method="post">
+
+            <div class="input-box">
+                <label>Username</label>
+                <input 
+                    type="email"
+                    name="useremail"
+                    placeholder="Enter useremail" required>
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input 
+                    type="password"
+                    name="userpassword"
+                    placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Login</button>
+            
+
+        </form>
+        <center>
+            <a href="{{url_for('forgot')}}">forgetpassword</a>
+        </center>
+        <script>
+
+        function validateLogin(){
+
+            let username =
+                document.getElementById("username").value.trim();
+
+            let password =
+                document.getElementById("password").value.trim();
+
+            let error =
+                document.getElementById("errorMsg");
+
+            error.style.color = "#ffb3b3";
+            error.style.textAlign = "center";
+            error.style.marginTop = "15px";
+
+            // Empty Field Validation
+
+            if(username === "" || password === ""){
+
+                error.innerHTML =
+                    "All fields are required";
+                    
+                return false;
+            }
+
+            // Password Validation
+
+            let passwordPattern =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+            if(!passwordPattern.test(password)){
+
+                error.innerHTML =
+                    "Password must contain minimum 8 characters, uppercase, lowercase, number and special character";
+
+                return false;
+            }
+
+            // Successful Validation
+
+            error.style.color = "lightgreen";
+
+            error.innerHTML =
+                "Login Successful";
+
+            return true;
+        }
+
+    </script>
+
+
+    </div>
+
+</body>
+</html>

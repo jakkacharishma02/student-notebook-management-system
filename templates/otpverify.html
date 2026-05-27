@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6 Digit OTP Verification</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f4f4f4;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .container{
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+      width:380px;
+      text-align:center;
+    }
+
+    h2{
+      margin-bottom:10px;
+    }
+
+    p{
+      color:#666;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+
+    .otp-box{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:25px;
+    }
+
+    .otp-input{
+      width:50px;
+      height:55px;
+      text-align:center;
+      font-size:22px;
+      border:2px solid #ccc;
+      border-radius:8px;
+      outline:none;
+      /* text-transform:uppercase; */
+    }
+
+    .otp-input:focus{
+      border-color:#007bff;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      border:none;
+      background:#007bff;
+      color:white;
+      font-size:16px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <b>{{ message }}</b>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+  <h2>Verify OTP</h2>
+  <p>Enter your 6-character OTP</p>
+
+  <form method="POST">
+
+    <div class="otp-box">
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+    </div>
+
+    <!-- Hidden OTP -->
+    <input type="hidden" name="otp" id="fullOtp">
+
+    <button type="submit">Verify OTP</button>
+
+  </form>
+</div>
+
+<script>
+  const inputs = document.querySelectorAll(".otp-input");
+  const fullOtp = document.getElementById("fullOtp");
+
+  inputs.forEach((input, index) => {
+
+    input.addEventListener("input", (e) => {
+
+      // Allow only alphanumeric
+      input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+
+      // Move next
+      if(input.value.length === 1 && index < inputs.length - 1){
+        inputs[index + 1].focus();
+      }
+
+      updateOTP();
+    });
+
+    input.addEventListener("keydown", (e) => {
+
+      // Move back
+      if(e.key === "Backspace" && input.value === "" && index > 0){
+        inputs[index - 1].focus();
+      }
+    });
+  });
+
+  function updateOTP(){
+    let otp = "";
+
+    inputs.forEach(input => {
+      otp += input.value;
+    });
+
+    fullOtp.value = otp;
+  }
+</script>
+
+</body>
+</html>
+

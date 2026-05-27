@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Notebook Dashboard</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    {% block addcss %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            Student Notebook
+        </div>
+        
+
+        {{session.get('user')}} 
+
+        <!-- Navigation Links -->
+
+        <ul class="nav-links">
+
+            <!-- Notes Dropdown -->
+
+            <li class="dropdown">
+                <button class="dropbtn">
+                    <i class="fa-solid fa-book"></i>
+                    Notes
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="{{url_for('addnotes')}}">
+                        Add Notes
+                    </a>
+                    <a href="{{url_for('viewallnotes')}}">
+                        View All Notes
+                    </a>
+                    <a href="{{url_for('getexceldata')}}">
+                        Get Excel Data
+                    </a>
+                </div>
+
+            </li>
+
+            <!-- File Dropdown -->
+
+            <li class="dropdown">
+                <button class="dropbtn">
+                    <i class="fa-solid fa-file"></i>
+                    Files
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="{{url_for('uploadfile')}}">
+                    
+                        Upload File
+                    </a>
+                    <a href="{{url_for('viewallfiles')}}">
+                        View All Files
+                    </a>
+                </div>
+
+            </li>
+
+            <!-- Search -->
+
+            <li class="search-box">
+                <form method='post' action="{{url_for('search')}}">
+                <input 
+                type="text"
+                name="sdata"
+                placeholder="Search notes or files..."
+                >
+                <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            </li>
+
+            <!-- Logout -->
+
+            <li>
+                <a href="{{url_for('logout')}}"><button class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </button></a>
+
+            </li>
+        </ul>
+    </nav>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <b>{{ message }}</b>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+    {% block content %}
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <h1>Welcome to Student Notebook Dashboard</h1>
+        <p>
+            Manage notes, files and academic resources easily
+        </p>
+    </div>
+    {% endblock %}
+</body>
+</html>

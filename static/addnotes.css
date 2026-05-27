@@ -1,0 +1,174 @@
+/* ================= ADD NOTES PAGE ================= */
+
+.add-notes-container{
+
+    width:100%;
+
+    min-height:calc(100vh - 90px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:50px 20px;
+}
+
+/* Notes Card */
+
+.notes-card{
+
+    width:100%;
+
+    max-width:700px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Heading */
+
+.notes-card h2{
+
+    font-size:36px;
+
+    color:#111827;
+
+    margin-bottom:12px;
+
+    text-align:center;
+
+    font-weight:600;
+}
+
+/* Paragraph */
+
+.notes-card p{
+
+    text-align:center;
+
+    color:#6b7280;
+
+    margin-bottom:35px;
+
+    font-size:15px;
+}
+
+/* Form Group */
+
+.form-group{
+
+    margin-bottom:24px;
+}
+
+/* Labels */
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    color:#374151;
+}
+
+/* Inputs & Textareas */
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:14px;
+
+    outline:none;
+
+    background:#f9fafb;
+
+    color:#111827;
+
+    font-size:15px;
+
+    transition:0.3s ease;
+}
+
+/* Textarea */
+
+.form-group textarea{
+
+    resize:none;
+
+    min-height:180px;
+}
+
+/* Placeholder */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+    color:#9ca3af;
+}
+
+/* Focus Effect */
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    border-color:#111827;
+
+    background:white;
+
+    box-shadow:0 0 0 4px rgba(17,24,39,0.08);
+}
+
+/* Save Button */
+
+.save-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#111827;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+/* Hover */
+
+.save-btn:hover{
+
+    background:#000000;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}

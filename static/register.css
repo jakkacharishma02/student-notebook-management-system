@@ -1,0 +1,188 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#f5f1e8;
+
+    color:#1f2937;
+
+    padding:40px;
+}
+
+/* Form Container */
+
+.form-container{
+
+    width:450px;
+
+    background:white;
+
+    padding:45px 40px;
+
+    border-radius:22px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Flash Messages */
+
+.form-container b{
+
+    display:block;
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    font-weight:500;
+}
+
+/* Heading */
+
+.form-container h1{
+
+    text-align:center;
+
+    font-size:36px;
+
+    color:#111827;
+
+    margin-bottom:30px;
+
+    font-weight:600;
+}
+
+/* Input Box */
+
+.input-box{
+
+    margin-bottom:22px;
+}
+
+/* Labels */
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    color:#374151;
+}
+
+/* Input Fields */
+
+.input-box input{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:#f9fafb;
+
+    color:#111827;
+
+    font-size:15px;
+
+    transition:0.3s ease;
+}
+
+/* Placeholder */
+
+.input-box input::placeholder{
+
+    color:#9ca3af;
+}
+
+/* Focus Effect */
+
+.input-box input:focus{
+
+    border-color:#3b82f6;
+
+    background:white;
+
+    box-shadow:0 0 0 4px rgba(59,130,246,0.12);
+}
+
+/* Error Message */
+
+#errorMsg{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    font-weight:500;
+}
+
+/* Submit Button */
+
+.submit-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1f2937;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+
+    margin-top:12px;
+}
+
+/* Hover Effect */
+
+.submit-btn:hover{
+
+    background:#111827;
+
+    transform:translateY(-2px);
+}
