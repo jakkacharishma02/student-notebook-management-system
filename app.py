@@ -356,7 +356,7 @@ def uploadfile():
         else:
             flash('File uploaded successfully')
             return redirect(url_for('uploadfile'))
-    return render_template('uploadfile.html')
+    return render_template('uploadfiles.html')
 @app.route('/viewallfiles')
 def viewallfiles():
     if not session.get('user'):
